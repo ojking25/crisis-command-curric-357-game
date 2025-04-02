@@ -1,0 +1,103 @@
+[gd_scene load_steps=2 format=3 uid="uid://blk0ltlkeppo5"]
+
+[ext_resource type="Script" uid="uid://csg178qn3nyjw" path="res://game_scene.gd" id="1_eqhe0"]
+
+[node name="GameScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eqhe0")
+
+[node name="ResourcePanel" type="HBoxContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 70.0
+
+[node name="CurrencyLabel" type="Label" parent="ResourcePanel"]
+layout_mode = 2
+text = "💰 Currency: 1000"
+
+[node name="FoodLabel" type="Label" parent="ResourcePanel"]
+layout_mode = 2
+text = "🍞 Food: 200"
+
+[node name="MaterialsLabel" type="Label" parent="ResourcePanel"]
+layout_mode = 2
+text = "🧱 Materials: 150"
+
+[node name="TurnLabel" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.1
+anchor_right = 0.5
+anchor_bottom = 0.1
+offset_left = -60.0
+text = "Day 1 / 30"
+
+[node name="RegionLabel" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.2
+anchor_right = 0.5
+anchor_bottom = 0.2
+offset_left = -100.0
+text = "Region: A - Forest Economy"
+
+[node name="BuildFacilityButton" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.3
+anchor_top = 0.5
+anchor_right = 0.3
+anchor_bottom = 0.5
+offset_left = -75.0
+text = "Build Facility"
+
+[node name="TradeButton" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+text = "Trade"
+
+[node name="EndTurnButton" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.7
+anchor_top = 0.5
+anchor_right = 0.7
+anchor_bottom = 0.5
+offset_left = -75.0
+text = "End Turn"
+
+[node name="TutorialPopup" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="PopupPanel" type="Panel" parent="TutorialPopup"]
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.7
+anchor_right = 0.75
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="DialogLabel" type="Label" parent="TutorialPopup/PopupPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="EndTurnButton" to="." method="_on_end_turn_button_pressed"]
