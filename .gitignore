@@ -1,3 +1,22 @@
-# Godot 4+ specific ignores
-.godot/
-/android/
+# Godot-specific
+.import/
+.export/
+*.tmp
+*.log
+*.import
+*.mono
+.mono/
+mono/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Editor-specific
+*.user
+*.sublime-workspace
+*.sublime-project
+*.vscode/
+
+# Compiled scripts
+*.pyc
