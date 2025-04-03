@@ -15,10 +15,18 @@ run/main_scene="uid://4ne55alsdlqw"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalValueControl="*res://Tianhao_Scene/Global_Value_Control.gd"
+
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+
+[editor]
+
+version_control/autoload_on_startup=true
 
 [rendering]
 

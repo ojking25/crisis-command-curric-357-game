@@ -1,0 +1,104 @@
+[gd_scene load_steps=13 format=3 uid="uid://cwpb6nlxrs8cm"]
+
+[ext_resource type="Texture2D" uid="uid://bvhuwscw8hw5n" path="res://Tianhao_Scene/Map_1_2.png" id="1_smxhg"]
+[ext_resource type="Script" uid="uid://dyop1ha3qaf0f" path="res://Tianhao_Scene/sprite_2d.gd" id="2_lqil2"]
+[ext_resource type="Script" uid="uid://c7genfkxwgjgd" path="res://Tianhao_Scene/Global_Value_Control.gd" id="3_ker07"]
+[ext_resource type="Script" uid="uid://dtmrh1g3mk3aw" path="res://Tianhao_Scene/label.gd" id="4_vxvc0"]
+[ext_resource type="Texture2D" uid="uid://bwtgq4yhg122j" path="res://Tianhao_Scene/End_Day.png" id="5_rofsm"]
+[ext_resource type="Script" uid="uid://dykuqced2jqfc" path="res://Tianhao_Scene/end_day.gd" id="6_sjj68"]
+[ext_resource type="Script" uid="uid://nf2icthan38h" path="res://Tianhao_Scene/turn_calculator.gd" id="7_jlw02"]
+[ext_resource type="Texture2D" uid="uid://d3y0ofuk4yqdc" path="res://Tianhao_Scene/city.png" id="8_117rf"]
+[ext_resource type="Script" uid="uid://cexdj80aq1twf" path="res://Tianhao_Scene/District_1.gd" id="9_2t3sd"]
+[ext_resource type="Script" uid="uid://cy1wb7lsuty1l" path="res://Tianhao_Scene/District1_List.gd" id="11_lqil2"]
+[ext_resource type="Texture2D" uid="uid://cmvakeeqxljj" path="res://Tianhao_Scene/square_dark_2.png" id="11_m5dxi"]
+
+[sub_resource type="GDScript" id="GDScript_m5dxi"]
+script/source = "extends Panel
+	
+"
+
+[node name="Final_project" type="Node2D"]
+position = Vector2(65.6331, -20.6304)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(786.367, 610.63)
+scale = Vector2(1.32192, 1.27836)
+texture = ExtResource("1_smxhg")
+script = ExtResource("2_lqil2")
+
+[node name="Global_Value_Control" type="Node2D" parent="."]
+script = ExtResource("3_ker07")
+
+[node name="Display_Food" type="Label" parent="Global_Value_Control"]
+offset_left = -132.633
+offset_top = 178.63
+offset_right = -93.6331
+offset_bottom = 201.63
+text = "Food"
+script = ExtResource("4_vxvc0")
+
+[node name="Display_Money" type="Label" parent="Global_Value_Control"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Display_Materials" type="Label" parent="Global_Value_Control"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Buttons" type="Node2D" parent="."]
+
+[node name="End_Day" type="Button" parent="Buttons"]
+offset_left = 1427.0
+offset_top = 894.0
+offset_right = 1612.0
+offset_bottom = 972.0
+action_mode = 0
+icon = ExtResource("5_rofsm")
+script = ExtResource("6_sjj68")
+
+[node name="Turn_Calculator" type="Node2D" parent="."]
+script = ExtResource("7_jlw02")
+
+[node name="Districts" type="Node2D" parent="."]
+position = Vector2(0.366898, 4.6304)
+
+[node name="District_1" type="Button" parent="Districts"]
+offset_left = 1154.0
+offset_top = 691.0
+offset_right = 1205.0
+offset_bottom = 781.0
+icon = ExtResource("8_117rf")
+script = ExtResource("9_2t3sd")
+
+[node name="Build_List_District_1" type="Panel" parent="Districts/District_1"]
+layout_direction = 1
+layout_mode = 0
+offset_left = 570.0
+offset_top = -391.0
+offset_right = 583.0
+offset_bottom = -371.0
+script = SubResource("GDScript_m5dxi")
+
+[node name="District1_List" type="HBoxContainer" parent="Districts/District_1/Build_List_District_1"]
+layout_mode = 0
+offset_left = -680.0
+offset_top = 289.0
+offset_right = -636.0
+offset_bottom = 333.0
+script = ExtResource("11_lqil2")
+
+[node name="City_1_Slot_2" type="Button" parent="Districts/District_1/Build_List_District_1/District1_List"]
+layout_mode = 2
+icon = ExtResource("11_m5dxi")
+
+[node name="City_1_Slot_3" type="Button" parent="Districts/District_1/Build_List_District_1/District1_List"]
+layout_mode = 2
+icon = ExtResource("11_m5dxi")
+
+[node name="City_1_Slot_1" type="Button" parent="Districts/District_1/Build_List_District_1/District1_List"]
+layout_mode = 2
+icon = ExtResource("11_m5dxi")
+
+[connection signal="pressed" from="Buttons/End_Day" to="Buttons/End_Day" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/End_Day" to="Turn_Calculator" method="_on_end_day_pressed"]
+[connection signal="pressed" from="Districts/District_1" to="Districts/District_1/Build_List_District_1/District1_List" method="_on_district_1_pressed"]
